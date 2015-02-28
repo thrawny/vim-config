@@ -1,0 +1,7 @@
+.netrwhist
+bundle/*
+backup/*
+swap/*
+undo/*
+!*.gitkeep
+*.swp
