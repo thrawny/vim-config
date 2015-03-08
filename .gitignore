@@ -3,5 +3,6 @@ bundle/*
 backup/*
 swap/*
 undo/*
+sessions/*
 !*.gitkeep
 *.swp

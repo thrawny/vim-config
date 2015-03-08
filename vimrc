@@ -5,18 +5,22 @@ filetype off                  " required
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
 
+Plugin 'Vundle.vim'
 Plugin 'ctrlp.vim'
 Plugin 'surround.vim'
 Plugin 'The-NERD-tree'
 Plugin 'jade.vim'
-Plugin 'Valloric/YouCompleteMe'
+"Plugin 'Valloric/YouCompleteMe'
 Plugin 'Yggdroot/indentLine'
 Plugin 'terryma/vim-multiple-cursors'
 Plugin 'bronson/vim-trailing-whitespace'
-
+Plugin 'xolox/vim-session'
+Plugin 'xolox/vim-misc'
+Plugin 'Vitality'
+"Plugin 'delimitMate.vim'
 call vundle#end()            " required
 filetype plugin indent on    " required
-
+set backspace=indent,eol,start
 set ruler
 set gcr=n:blinkon0
 set expandtab
@@ -46,3 +50,13 @@ endif
 
 " Close the damn preview window already.
 let g:ycm_autoclose_preview_window_after_completion=1
+set omnifunc=csscomplete#CompleteCSS
+inoremap {<CR> {<CR>}<Esc>ko
+
+let g:session_autosave = 'yes'
+let g:session_autoload = 'yes'
+
+noremap Y y$
+
+set tw=80
+set mouse=a
