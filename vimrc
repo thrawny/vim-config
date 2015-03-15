@@ -17,6 +17,10 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tommcdo/vim-exchange'
 Plugin 'ivanov/vim-ipython'
 Plugin 'Valloric/YouCompleteMe'
+Plugin 'raichoo/haskell-vim'
+Plugin 'jelera/vim-javascript-syntax'
+Plugin 'hdima/python-syntax'
+
 
 "Plugin 'bling/vim-airline'
 "Plugin 'powerline/powerline'
@@ -101,3 +105,13 @@ noremap Y y$
 
 set tw=80
 set mouse=a
+
+let g:python_highlight_all = 1
+let g:python_version_2 = 1
+
+"set laststatus=2 " Always display the statusline in all windows
+"set showtabline=2 " Always display the tabline, even if there is only one tab
+"set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+"let g:airline_powerline_fonts = 1
+"let g:airline_theme = 'molokai'
+
