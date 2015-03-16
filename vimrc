@@ -20,6 +20,8 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'raichoo/haskell-vim'
 Plugin 'jelera/vim-javascript-syntax'
 Plugin 'hdima/python-syntax'
+Plugin 'michaeljsmith/vim-indent-object'
+Plugin 'tpope/vim-fugitive'
 
 
 "Plugin 'bling/vim-airline'
@@ -32,33 +34,9 @@ call vundle#end()            " required
 filetype plugin indent on    " required
 
 
-" Rebind <Leader> key
-" " I like to have it here becuase it is easier to reach than the default and
-" " it is next to ``m`` and ``n`` which I use for navigating between tabs.
-let mapleader = ","
-
-" easier moving between tabs
-map <Leader>n <esc>:bp<CR>
-map <Leader>m <esc>:bn<CR>
-
-" map sort function to a key
-vnoremap <Leader>s :sort<CR>
-
-map <Leader>l i['<ESC>ea']<ESC>
-
-" easier moving of code blocks
-" " Try to go into visual mode (v), thenselect several lines of code here and
-" " then press ``>`` several times.
-"vnoremap < <gv  " better indentation
-"vnoremap > >gv  " better indentation
-
-" Airline stuff
-"let g:airline#extensions#tabline#enabled = 1
-"set laststatus=2
-
+"Basic stuff
 set backspace=indent,eol,start
 set ruler
-"set gcr=n:blinkon0
 set expandtab
 set shiftwidth=2
 set softtabstop=2
@@ -67,20 +45,38 @@ set number
 set numberwidth=3
 set hidden
 set cursorline
-colorscheme molokai
-"set background=dark
-"let g:solarized_termcolors=16
-let g:ctrlp_working_path_mode = 'rw'
+set hlsearch
+set tw=80
+set mouse=a
+set timeoutlen=1000 ttimeoutlen=10
+set backupdir=~/.vim/backup//
+set directory=~/.vim/swap//
+set undodir=~/.vim/undo//
+set omnifunc=csscomplete#CompleteCSS
+
+" Cant see any difference :(
+let python_highlight_all = 1
+let python_version_2 = 1
+
+" Not using this anymore
+"let g:session_autosave = 'yes'
+"let g:session_autoload = 'yes'
+"set gcr=n:blinkon0
+
+" Looks
 set guifont=Menlo\ Regular:h12
+colorscheme molokai
+" Correct colors in terminal
+if !has("gui_running")
+  set term=screen-256color
+endif
+
+" CtrlP stuff
+let g:ctrlp_working_path_mode = 'rw'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set wildignore+=*.pyc
 
-set backupdir=~/.vim/backup//
-set directory=~/.vim/swap//
-set undodir=~/.vim/undo//
-
-set timeoutlen=1000 ttimeoutlen=10
 
 " FIX: PluginUpdate => git pull: git-sh-setup: No such file or directory in
 " MacVim (OK in non-GUI version of Vim)
@@ -88,30 +84,42 @@ if has("gui_macvim")
   set shell=/bin/bash\ -l
 endif
 
-" Correct colors in terminal
-if !has("gui_running")
-  set term=screen-256color
-endif
 
 " Close the damn preview window already.
 let g:ycm_autoclose_preview_window_after_completion=1
-set omnifunc=csscomplete#CompleteCSS
+
+" My own mappings
+" Rebind <Leader> key
+let mapleader = ","
+
 inoremap {<CR> {<CR>}<Esc>ko
 
-"let g:session_autosave = 'yes'
-"let g:session_autoload = 'yes'
-
+" easier moving between buffers
+map <Leader>n <esc>:bp<CR>
+map <Leader>m <esc>:bn<CR>
+" map sort function to a key
+vnoremap <Leader>s :sort<CR>
+" Wrap word in ['']
+map <Leader>l i['<ESC>ea']<ESC>
+map <Leader>o :noh<ESC>
 noremap Y y$
-
-set tw=80
-set mouse=a
-
-let g:python_highlight_all = 1
-let g:python_version_2 = 1
-
+noremap <C-d> <C-d>zz
+noremap <C-u> <C-u>zz
+noremap <Leader>v :e ~/.vimrc<CR>
+" Not using airline currently
 "set laststatus=2 " Always display the statusline in all windows
 "set showtabline=2 " Always display the tabline, even if there is only one tab
 "set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 "let g:airline_powerline_fonts = 1
 "let g:airline_theme = 'molokai'
 
+"Work on this later
+"set noruler
+"set laststatus=2
+"set statusline=
+"set statusline+=%<\                       " cut at start
+"set statusline+=%2*[%n%H%M%R%W]%*\        " flags and buf no
+"set statusline+=%-40f\                    " path
+"set statusline+=%=%1*%y%*%*\              " file type
+"set statusline+=%10((%l,%c)%)\            " line and column
+"set statusline+=%P                        " percentage of file
