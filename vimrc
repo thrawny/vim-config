@@ -22,9 +22,8 @@ Plugin 'jelera/vim-javascript-syntax'
 Plugin 'hdima/python-syntax'
 Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'tpope/vim-fugitive'
-
-
 Plugin 'bling/vim-airline'
+
 "Plugin 'powerline/powerline'
 "Plugin 'Yggdroot/indentLine'
 "Plugin 'xolox/vim-session'
