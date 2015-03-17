@@ -24,7 +24,7 @@ Plugin 'michaeljsmith/vim-indent-object'
 Plugin 'tpope/vim-fugitive'
 
 
-"Plugin 'bling/vim-airline'
+Plugin 'bling/vim-airline'
 "Plugin 'powerline/powerline'
 "Plugin 'Yggdroot/indentLine'
 "Plugin 'xolox/vim-session'
@@ -107,19 +107,8 @@ noremap <C-d> <C-d>zz
 noremap <C-u> <C-u>zz
 noremap <Leader>v :e ~/.vimrc<CR>
 " Not using airline currently
-"set laststatus=2 " Always display the statusline in all windows
+set laststatus=2 " Always display the statusline in all windows
 "set showtabline=2 " Always display the tabline, even if there is only one tab
-"set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
-"let g:airline_powerline_fonts = 1
-"let g:airline_theme = 'molokai'
-
-"Work on this later
-"set noruler
-"set laststatus=2
-"set statusline=
-"set statusline+=%<\                       " cut at start
-"set statusline+=%2*[%n%H%M%R%W]%*\        " flags and buf no
-"set statusline+=%-40f\                    " path
-"set statusline+=%=%1*%y%*%*\              " file type
-"set statusline+=%10((%l,%c)%)\            " line and column
-"set statusline+=%P                        " percentage of file
+set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
+let g:airline_powerline_fonts = 1
+let g:airline_theme = 'badwolf'
