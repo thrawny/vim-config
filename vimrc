@@ -148,3 +148,4 @@ noremap <Leader>v :e ~/.vimrc<CR>
 noremap <leader>sv :source $MYVIMRC<CR>
 noremap n nzzzv
 noremap N Nzzzv
+noremap <Leader>, <C-^>zz
