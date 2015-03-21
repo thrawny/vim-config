@@ -104,6 +104,8 @@ set autoread
 set incsearch
 " highlight matches
 set hlsearch
+" dont wanna highlight searches whenever i source vimrc
+nohlsearch
 " ignore case sensitivity
 set ignorecase
 " we want smartcase though
@@ -140,12 +142,9 @@ map <Leader>m <esc>:bn<CR>
 vnoremap <Leader>s :sort<CR>
 " Wrap word in ['']
 map <Leader>l i['<ESC>ea']<ESC>
-map <Leader>o :noh<ESC>
+map <silent> <Leader>o :noh<ESC>
 noremap Y y$
 noremap <C-d> <C-d>zz
 noremap <C-u> <C-u>zz
 noremap <Leader>v :e ~/.vimrc<CR>
 noremap <leader>sv :source $MYVIMRC<CR>
-noremap n nzzzv
-noremap N Nzzzv
-noremap <Leader>, <C-^>zz
