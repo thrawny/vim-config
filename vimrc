@@ -94,6 +94,8 @@ set timeoutlen=1000 ttimeoutlen=10
 set backupdir=~/.vim/backup//
 set directory=~/.vim/swap//
 set undodir=~/.vim/undo//
+set backup
+set noswapfile
 set omnifunc=csscomplete#CompleteCSS
 set autoread
 
@@ -113,7 +115,7 @@ set smartcase
 "set gcr=n:blinkon0
 
 " Looks
-set guifont=Menlo\ Regular:h12
+set guifont=Menlo\ Regular\ for\ Powerline:h12
 colorscheme molokai
 " Correct colors in terminal
 if !has("gui_running")
@@ -125,8 +127,6 @@ endif
 if has("gui_macvim")
   set shell=/bin/bash\ -l
 endif
-
-
 
 " My own mappings
 " Rebind <Leader> key
