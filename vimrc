@@ -66,8 +66,12 @@ let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_folding = 0
 let g:pymode_rope = 0
+let g:pymode_options_colorcolumn = 0
 
 Plugin 'hail2u/vim-css3-syntax'
+Plugin 'Raimondi/delimitMate'
+Plugin 'tpope/vim-commentary'
+Plugin 'othree/xml.vim'
 
 "Plugin 'powerline/powerline'
 "Plugin 'Yggdroot/indentLine'
@@ -146,5 +150,11 @@ map <silent> <Leader>o :noh<ESC>
 noremap Y y$
 noremap <C-d> <C-d>zz
 noremap <C-u> <C-u>zz
+noremap n nzzzv
+noremap N Nzzzv
+noremap <Leader>, <C-^>zz
 noremap <Leader>v :e ~/.vimrc<CR>
-noremap <leader>sv :source $MYVIMRC<CR>
+noremap <Leader>z :e ~/.zshrc<CR>
+noremap <Leader>tm :e ~/.tmux.conf<CR>
+noremap <Leader>sv :source $MYVIMRC<CR>
+noremap <Leader>z :NERDTreeToggle<CR>
