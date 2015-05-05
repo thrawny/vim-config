@@ -70,8 +70,16 @@ let g:pymode_options_colorcolumn = 0
 
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'Raimondi/delimitMate'
+
 Plugin 'tpope/vim-commentary'
+augroup plugin_commentary
+    au!
+    au FileType htmldjango setlocal commentstring={#\ %s\ #}
+augroup END
+
 Plugin 'othree/xml.vim'
+Plugin 'tpope/vim-unimpaired'
+Plugin 'tpope/vim-repeat'
 
 "Plugin 'powerline/powerline'
 "Plugin 'Yggdroot/indentLine'
@@ -157,4 +165,37 @@ noremap <Leader>v :e ~/.vimrc<CR>
 noremap <Leader>z :e ~/.zshrc<CR>
 noremap <Leader>tm :e ~/.tmux.conf<CR>
 noremap <Leader>sv :source $MYVIMRC<CR>
-noremap <Leader>z :NERDTreeToggle<CR>
+noremap <localleader>b :NERDTreeToggle<CR>
+noremap <localleader>, ,
+
+
+augroup ft_html
+  au!
+
+  au Filetype jinja,htmldjango inoremap <buffer> {{<space> {{<space><space>}}<left><left><left>
+  au Filetype jinja,htmldjango inoremap <buffer> {%<space> {%<space><space>%}<left><left><left>
+augroup END
+
+" a better htmldjango detection
+augroup filetypedetect
+  " removes current htmldjango detection located at $VIMRUNTIME/filetype.vim
+  au! BufNewFile,BufRead *.html
+  au  BufNewFile,BufRead *.html   call FThtml()
+
+  func! FThtml()
+    let n = 1
+    while n < 10 && n < line("$")
+      if getline(n) =~ '\<DTD\s\+XHTML\s'
+        setf xhtml
+        return
+      endif
+      if getline(n) =~ '{%\|{{\|{#'
+        setf htmldjango
+        return
+      endif
+      let n = n + 1
+    endwhile
+    setf html
+  endfunc
+augroup END
+
