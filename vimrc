@@ -81,11 +81,6 @@ Plugin 'othree/xml.vim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-repeat'
 
-"Plugin 'powerline/powerline'
-"Plugin 'Yggdroot/indentLine'
-"Plugin 'xolox/vim-session'
-"Plugin 'delimitMate.vim'
-
 call vundle#end()            " required
 filetype plugin indent on    " required
 
