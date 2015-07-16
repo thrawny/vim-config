@@ -29,13 +29,14 @@ Plugin 'Vitality' " Tmux bar cursor in insert mode
 Plugin 'christoomey/vim-tmux-navigator'
 
 " Change two selections. use cx or cxx
+" X in Visual mode !!!
 Plugin 'tommcdo/vim-exchange'
 
 Plugin 'ivanov/vim-ipython'
 
-Plugin 'Valloric/YouCompleteMe'
+" Plugin 'Valloric/YouCompleteMe'
 " Close the damn preview window already.
-let g:ycm_autoclose_preview_window_after_completion=1
+" let g:ycm_autoclose_preview_window_after_completion=1
 
 Plugin 'raichoo/haskell-vim'
 
@@ -61,6 +62,7 @@ Plugin 'pangloss/vim-javascript'
 
 Plugin 'othree/html5.vim'
 
+
 Plugin 'klen/python-mode'
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
@@ -72,17 +74,47 @@ Plugin 'hail2u/vim-css3-syntax'
 Plugin 'Raimondi/delimitMate'
 
 Plugin 'tpope/vim-commentary'
-augroup plugin_commentary
-    au!
-    au FileType htmldjango setlocal commentstring={#\ %s\ #}
-augroup END
 
 Plugin 'othree/xml.vim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-repeat'
 
+Plugin 'davidhalter/jedi-vim'
+let g:jedi#show_call_signatures = "2"
+let g:jedi#popup_select_first = 1
+autocmd FileType python setlocal completeopt-=preview
+
+Plugin 'ervandew/supertab'
+let g:SuperTabDefaultCompletionType = "<c-n>"
+
+" Silver search
+Plugin 'rking/ag.vim'
+if executable('ag')
+  " Use ag over grep
+  set grepprg=ag\ --nogroup\ --nocolor
+
+  " Use ag in CtrlP for listing files. Lightning fast and respects .gitignore
+  let g:ctrlp_user_command = 'ag %s -l --nocolor -g ""'
+
+  " ag is fast enough that CtrlP doesn't need to cache
+  let g:ctrlp_use_caching = 0
+endif
+
+Plugin 'wincent/Command-T'
+let g:CommandTCancelMap=['<ESC>','<C-c>']
+let g:CommandTMaxHeight=10
+let g:CommandTWildIgnore=&wildignore . ",**/venv/*"
+
+Plugin 'robbles/logstash.vim'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
+
+" Python stuff
+if has('python3')
+  let g:jedi#force_py_version = 3
+  let g:pymode_python = 'python3'
+endif
 
 "Basic stuff
 set backspace=indent,eol,start
@@ -125,6 +157,7 @@ set smartcase
 
 " Looks
 set guifont=Menlo\ Regular\ for\ Powerline:h12
+let g:molokai_original = 1
 colorscheme molokai
 " Correct colors in terminal
 if !has("gui_running")
@@ -137,6 +170,7 @@ if has("gui_macvim")
   set shell=/bin/bash\ -l
 endif
 
+
 " My own mappings
 " Rebind <Leader> key
 let mapleader = ","
@@ -148,7 +182,7 @@ map <Leader>m <esc>:bn<CR>
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
 " Wrap word in ['']
-map <Leader>l i['<ESC>ea']<ESC>
+map <Leader>lc :lclose<CR>
 map <silent> <Leader>o :noh<ESC>
 noremap Y y$
 noremap <C-d> <C-d>zz
@@ -156,19 +190,29 @@ noremap <C-u> <C-u>zz
 noremap n nzzzv
 noremap N Nzzzv
 noremap <Leader>, <C-^>zz
-noremap <Leader>v :e ~/.vimrc<CR>
+noremap <Leader>v :e $MYVIMRC<CR>
 noremap <Leader>z :e ~/.zshrc<CR>
 noremap <Leader>tm :e ~/.tmux.conf<CR>
 noremap <Leader>sv :source $MYVIMRC<CR>
 noremap <localleader>b :NERDTreeToggle<CR>
 noremap <localleader>, ,
 
+augroup plugin_commentary
+    au!
+    au FileType htmldjango setlocal commentstring={#\ %s\ #}
+    au FileType php setlocal commentstring=//\ %s
+augroup END
 
 augroup ft_html
   au!
 
   au Filetype jinja,htmldjango inoremap <buffer> {{<space> {{<space><space>}}<left><left><left>
   au Filetype jinja,htmldjango inoremap <buffer> {%<space> {%<space><space>%}<left><left><left>
+augroup END
+
+augroup ft_php
+  au Filetype php inoremap <buffer> <<space> <?php<space><space>?><left><left><left>
+  au Filetype php inoremap <buffer> <<CR> <?php<CR>
 augroup END
 
 " a better htmldjango detection
