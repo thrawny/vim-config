@@ -196,6 +196,10 @@ noremap <Leader>tm :e ~/.tmux.conf<CR>
 noremap <Leader>sv :source $MYVIMRC<CR>
 noremap <localleader>b :NERDTreeToggle<CR>
 noremap <localleader>, ,
+nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+
+" My own awesome plugin
+nnoremap <silent> p :call PasteReplaceEmptyLine()<CR>
 
 augroup plugin_commentary
     au!
