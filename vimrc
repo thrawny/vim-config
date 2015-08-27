@@ -199,7 +199,7 @@ noremap <localleader>, ,
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
 
 " My own awesome plugin
-nnoremap <silent> p :call PasteReplaceEmptyLine()<CR>
+" nnoremap <silent> p :call PasteReplaceEmptyLine()<CR>
 
 augroup plugin_commentary
     au!
