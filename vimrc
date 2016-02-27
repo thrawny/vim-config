@@ -197,6 +197,13 @@ noremap <Leader>sv :source $MYVIMRC<CR>
 noremap <localleader>b :NERDTreeToggle<CR>
 noremap <localleader>, ,
 nnoremap <expr> gp '`[' . strpart(getregtype(), 0, 1) . '`]'
+vnoremap // y/<C-R>"<CR>"
+
+" Clipboard copy paste
+noremap <space>y "*y
+noremap <space>Y "*Y
+noremap <space>p "*p
+noremap <space>P "*P
 
 " My own awesome plugin
 " nnoremap <silent> p :call PasteReplaceEmptyLine()<CR>
