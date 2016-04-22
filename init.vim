@@ -1,94 +1,89 @@
-set nocompatible              " be iMproved, required
-filetype off                  " required
+call plug#begin('~/.config/nvim/plugged')
 
-" set the runtime path to include Vundle and initialize
-set rtp+=~/.vim/bundle/Vundle.vim
-call vundle#begin()
-Plugin 'Vundle.vim'
-
-Plugin 'ctrlp.vim'
+Plug 'ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rw'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
 set wildignore+=*/.git/*,*/.hg/*,*/.svn/*
 set wildignore+=*.pyc
 
-Plugin 'surround.vim'
+Plug 'surround.vim'
 
-Plugin 'The-NERD-tree'
+Plug 'The-NERD-tree'
 
-Plugin 'jade.vim'
+Plug 'jade.vim'
 
-Plugin 'terryma/vim-multiple-cursors'
+Plug 'terryma/vim-multiple-cursors'
 
-Plugin 'bronson/vim-trailing-whitespace'
+Plug 'bronson/vim-trailing-whitespace'
 
-Plugin 'xolox/vim-misc'
+Plug 'xolox/vim-misc'
 
-Plugin 'Vitality' " Tmux bar cursor in insert mode
+Plug 'Vitality' " Tmux bar cursor in insert mode
 
-Plugin 'christoomey/vim-tmux-navigator'
+Plug 'christoomey/vim-tmux-navigator'
 
 " Change two selections. use cx or cxx
 " X in Visual mode !!!
-Plugin 'tommcdo/vim-exchange'
+Plug 'tommcdo/vim-exchange'
 
-Plugin 'ivanov/vim-ipython'
+Plug 'ivanov/vim-ipython'
 
-" Plugin 'Valloric/YouCompleteMe'
+" Plug 'Valloric/YouCompleteMe'
 " Close the damn preview window already.
 " let g:ycm_autoclose_preview_window_after_completion=1
 
-Plugin 'raichoo/haskell-vim'
+Plug 'raichoo/haskell-vim'
 
-Plugin 'jelera/vim-javascript-syntax'
+Plug 'jelera/vim-javascript-syntax'
 
 " Select blocks in python
-Plugin 'michaeljsmith/vim-indent-object'
+Plug 'michaeljsmith/vim-indent-object'
 
 " Git wrapper
-Plugin 'tpope/vim-fugitive'
+Plug 'tpope/vim-fugitive'
 
-Plugin 'bling/vim-airline'
+Plug 'vim-airline/vim-airline'
+Plug 'vim-airline/vim-airline-themes'
 set laststatus=2 " Always display the statusline in all windows
 "set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
 let g:airline_powerline_fonts = 1
 let g:airline_theme = 'badwolf'
 
-Plugin 'mattn/emmet-vim'
+Plug 'mattn/emmet-vim'
 let g:user_emmet_leader_key='<C-w>'
 
-Plugin 'pangloss/vim-javascript'
+Plug 'pangloss/vim-javascript'
 
-Plugin 'othree/html5.vim'
+Plug 'othree/html5.vim'
 
 
-Plugin 'klen/python-mode'
+Plug 'klen/python-mode'
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_folding = 0
 let g:pymode_rope = 0
 let g:pymode_options_colorcolumn = 0
 
-Plugin 'hail2u/vim-css3-syntax'
-Plugin 'Raimondi/delimitMate'
+Plug 'hail2u/vim-css3-syntax'
+Plug 'Raimondi/delimitMate'
 
-Plugin 'tpope/vim-commentary'
+Plug 'tpope/vim-commentary'
 
-Plugin 'othree/xml.vim'
-Plugin 'tpope/vim-unimpaired'
-Plugin 'tpope/vim-repeat'
+Plug 'othree/xml.vim'
+Plug 'tpope/vim-unimpaired'
+Plug 'tpope/vim-repeat'
 
-Plugin 'davidhalter/jedi-vim'
-let g:jedi#show_call_signatures = "2"
-let g:jedi#popup_select_first = 1
-autocmd FileType python setlocal completeopt-=preview
+" Plug 'davidhalter/jedi-vim'
+" let g:jedi#show_call_signatures = "2"
+" let g:jedi#popup_select_first = 1
+" autocmd FileType python setlocal completeopt-=preview
 
-Plugin 'ervandew/supertab'
+Plug 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "<c-n>"
 
 " Silver search
-Plugin 'rking/ag.vim'
+Plug 'rking/ag.vim'
 if executable('ag')
   " Use ag over grep
   set grepprg=ag\ --nogroup\ --nocolor
@@ -100,21 +95,22 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-Plugin 'wincent/Command-T'
+Plug 'wincent/Command-T'
 let g:CommandTCancelMap=['<ESC>','<C-c>']
 let g:CommandTMaxHeight=10
 let g:CommandTWildIgnore=&wildignore . ",**/venv/*"
 
-Plugin 'robbles/logstash.vim'
+Plug 'robbles/logstash.vim'
 
-call vundle#end()            " required
-filetype plugin indent on    " required
+call plug#end()
 
 " Python stuff
-if has('python3')
-  let g:jedi#force_py_version = 3
-  let g:pymode_python = 'python3'
-endif
+" if has('python3')
+"   let g:jedi#force_py_version = 3
+"   let g:pymode_python = 'python3'
+" endif
+
+:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
 
 "Basic stuff
 set backspace=indent,eol,start
@@ -160,9 +156,9 @@ set guifont=Menlo\ Regular\ for\ Powerline:h12
 let g:molokai_original = 1
 colorscheme molokai
 " Correct colors in terminal
-if !has("gui_running")
-  set term=screen-256color
-endif
+" if !has("gui_running")
+"   set term=screen-256color
+" endif
 
 " FIX: PluginUpdate => git pull: git-sh-setup: No such file or directory in
 " MacVim (OK in non-GUI version of Vim)

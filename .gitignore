@@ -1,5 +1,6 @@
 .netrwhist
 bundle/*
+plugged/*
 backup/*
 swap/*
 undo/*
