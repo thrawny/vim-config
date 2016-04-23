@@ -1,5 +1,13 @@
 call plug#begin('~/.config/nvim/plugged')
 
+function! DoRemote(arg)
+  UpdateRemotePlugins
+endfunction
+Plug 'Shougo/deoplete.nvim', { 'do': function('DoRemote') }
+let g:deoplete#enable_at_startup = 1
+
+Plug 'zchee/deoplete-jedi'
+
 Plug 'ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rw'
 let g:ctrlp_custom_ignore = 'node_modules\|DS_Store\|git\|dist'
@@ -57,7 +65,6 @@ Plug 'pangloss/vim-javascript'
 
 Plug 'othree/html5.vim'
 
-
 Plug 'klen/python-mode'
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
@@ -75,8 +82,8 @@ Plug 'tpope/vim-unimpaired'
 Plug 'tpope/vim-repeat'
 
 " Plug 'davidhalter/jedi-vim'
-" let g:jedi#show_call_signatures = "2"
-" let g:jedi#popup_select_first = 1
+let g:jedi#show_call_signatures = "2"
+let g:jedi#popup_select_first = 1
 " autocmd FileType python setlocal completeopt-=preview
 
 Plug 'ervandew/supertab'
@@ -110,7 +117,11 @@ call plug#end()
 "   let g:pymode_python = 'python3'
 " endif
 
-:let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+silent! let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+silent! let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+silent! let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 "Basic stuff
 set backspace=indent,eol,start
@@ -146,11 +157,6 @@ set ignorecase
 " we want smartcase though
 set smartcase
 
-" Not using this anymore
-"let g:session_autosave = 'yes'
-"let g:session_autoload = 'yes'
-"set gcr=n:blinkon0
-
 " Looks
 set guifont=Menlo\ Regular\ for\ Powerline:h12
 let g:molokai_original = 1
@@ -159,13 +165,6 @@ colorscheme molokai
 " if !has("gui_running")
 "   set term=screen-256color
 " endif
-
-" FIX: PluginUpdate => git pull: git-sh-setup: No such file or directory in
-" MacVim (OK in non-GUI version of Vim)
-if has("gui_macvim")
-  set shell=/bin/bash\ -l
-endif
-
 
 " My own mappings
 " Rebind <Leader> key
@@ -200,9 +199,6 @@ noremap <space>y "*y
 noremap <space>Y "*Y
 noremap <space>p "*p
 noremap <space>P "*P
-
-" My own awesome plugin
-" nnoremap <silent> p :call PasteReplaceEmptyLine()<CR>
 
 augroup plugin_commentary
     au!
