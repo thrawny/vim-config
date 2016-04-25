@@ -4,7 +4,7 @@ filetype off                  " required
 " set the runtime path to include Vundle and initialize
 set rtp+=~/.vim/bundle/Vundle.vim
 call vundle#begin()
-Plugin 'Vundle.vim'
+Plugin 'VundleVim/Vundle.vim'
 
 Plugin 'ctrlp.vim'
 let g:ctrlp_working_path_mode = 'rw'
@@ -48,7 +48,8 @@ Plugin 'michaeljsmith/vim-indent-object'
 " Git wrapper
 Plugin 'tpope/vim-fugitive'
 
-Plugin 'bling/vim-airline'
+Plugin 'vim-airline/vim-airline'
+Plugin 'vim-airline/vim-airline-themes'
 set laststatus=2 " Always display the statusline in all windows
 "set showtabline=2 " Always display the tabline, even if there is only one tab
 set noshowmode " Hide the default mode text (e.g. -- INSERT -- below the statusline)
@@ -100,10 +101,10 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-Plugin 'wincent/Command-T'
-let g:CommandTCancelMap=['<ESC>','<C-c>']
-let g:CommandTMaxHeight=10
-let g:CommandTWildIgnore=&wildignore . ",**/venv/*"
+" Plugin 'wincent/Command-T'
+" let g:CommandTCancelMap=['<ESC>','<C-c>']
+" let g:CommandTMaxHeight=10
+" let g:CommandTWildIgnore=&wildignore . ",**/venv/*"
 
 Plugin 'robbles/logstash.vim'
 
@@ -117,6 +118,7 @@ if has('python3')
 endif
 
 "Basic stuff
+set encoding=utf-8
 set backspace=indent,eol,start
 set ruler
 set expandtab
