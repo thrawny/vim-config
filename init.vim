@@ -26,15 +26,13 @@ Plug 'bronson/vim-trailing-whitespace'
 
 Plug 'xolox/vim-misc'
 
-Plug 'Vitality' " Tmux bar cursor in insert mode
+" Plug 'Vitality' " Tmux bar cursor in insert mode
 
 Plug 'christoomey/vim-tmux-navigator'
 
 " Change two selections. use cx or cxx
 " X in Visual mode !!!
 Plug 'tommcdo/vim-exchange'
-
-Plug 'ivanov/vim-ipython'
 
 " Plug 'Valloric/YouCompleteMe'
 " Close the damn preview window already.
@@ -112,16 +110,20 @@ Plug 'robbles/logstash.vim'
 call plug#end()
 
 " Python stuff
-" if has('python3')
-"   let g:jedi#force_py_version = 3
-"   let g:pymode_python = 'python3'
-" endif
+let g:python_host_prog = '/Users/thrawn/.venvs/neovim2/bin/python'
+let g:python3_host_prog = '/Users/thrawn/.venvs/neovim3/bin/python'
 
-" let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
-silent! let &t_SI = "\<Esc>]50;CursorShape=1\x7"
-silent! let &t_SR = "\<Esc>]50;CursorShape=2\x7"
-silent! let &t_EI = "\<Esc>]50;CursorShape=0\x7"
+if has('python3')
+  let g:jedi#force_py_version = 3
+  let g:pymode_python = 'python3'
+endif
+
+" let $NVIM_TUI_ENABLE_CURSOR_SHAPE=1
+" let $TMUX_TUI_ENABLE_SHELL_CURSOR=1
+
+" silent! let &t_SI = "\<Esc>]50;CursorShape=1\x7"
+" silent! let &t_SR = "\<Esc>]50;CursorShape=2\x7"
+" silent! let &t_EI = "\<Esc>]50;CursorShape=0\x7"
 
 "Basic stuff
 set backspace=indent,eol,start
