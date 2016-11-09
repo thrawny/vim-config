@@ -15,6 +15,8 @@ set wildignore+=*.pyc
 Plugin 'surround.vim'
 
 Plugin 'The-NERD-tree'
+let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git', '.idea']
+let NERDTreeShowHidden=1
 
 Plugin 'jade.vim'
 
@@ -33,12 +35,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 Plugin 'tommcdo/vim-exchange'
 
 Plugin 'ivanov/vim-ipython'
-
-" Plugin 'Valloric/YouCompleteMe'
-" Close the damn preview window already.
-" let g:ycm_autoclose_preview_window_after_completion=1
-
-Plugin 'raichoo/haskell-vim'
 
 Plugin 'jelera/vim-javascript-syntax'
 
@@ -63,13 +59,13 @@ Plugin 'pangloss/vim-javascript'
 
 Plugin 'othree/html5.vim'
 
-
 Plugin 'klen/python-mode'
 let g:pymode_syntax = 1
 let g:pymode_syntax_all = 1
 let g:pymode_folding = 0
 let g:pymode_rope = 0
 let g:pymode_options_colorcolumn = 0
+let g:pymode_lint = 0
 
 Plugin 'hail2u/vim-css3-syntax'
 Plugin 'Raimondi/delimitMate'
@@ -79,11 +75,6 @@ Plugin 'tpope/vim-commentary'
 Plugin 'othree/xml.vim'
 Plugin 'tpope/vim-unimpaired'
 Plugin 'tpope/vim-repeat'
-
-Plugin 'davidhalter/jedi-vim'
-let g:jedi#show_call_signatures = "2"
-let g:jedi#popup_select_first = 1
-autocmd FileType python setlocal completeopt-=preview
 
 Plugin 'ervandew/supertab'
 let g:SuperTabDefaultCompletionType = "<c-n>"
@@ -101,21 +92,12 @@ if executable('ag')
   let g:ctrlp_use_caching = 0
 endif
 
-" Plugin 'wincent/Command-T'
-" let g:CommandTCancelMap=['<ESC>','<C-c>']
-" let g:CommandTMaxHeight=10
-" let g:CommandTWildIgnore=&wildignore . ",**/venv/*"
-
 Plugin 'robbles/logstash.vim'
+
+Plugin 'ekalinin/Dockerfile.vim'
 
 call vundle#end()            " required
 filetype plugin indent on    " required
-
-" Python stuff
-if has('python3')
-  let g:jedi#force_py_version = 3
-  let g:pymode_python = 'python3'
-endif
 
 "Basic stuff
 set encoding=utf-8
@@ -152,11 +134,6 @@ set ignorecase
 " we want smartcase though
 set smartcase
 
-" Not using this anymore
-"let g:session_autosave = 'yes'
-"let g:session_autoload = 'yes'
-"set gcr=n:blinkon0
-
 " Looks
 set guifont=Menlo\ Regular\ for\ Powerline:h12
 let g:molokai_original = 1
@@ -183,7 +160,6 @@ map <Leader>n <esc>:bp<CR>
 map <Leader>m <esc>:bn<CR>
 " map sort function to a key
 vnoremap <Leader>s :sort<CR>
-" Wrap word in ['']
 map <Leader>lc :lclose<CR>
 map <silent> <Leader>o :noh<ESC>
 noremap Y y$
@@ -206,9 +182,6 @@ noremap <space>y "*y
 noremap <space>Y "*Y
 noremap <space>p "*p
 noremap <space>P "*P
-
-" My own awesome plugin
-" nnoremap <silent> p :call PasteReplaceEmptyLine()<CR>
 
 augroup plugin_commentary
     au!
