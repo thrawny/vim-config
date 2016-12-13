@@ -18,10 +18,6 @@ Plugin 'The-NERD-tree'
 let NERDTreeIgnore = ['\.pyc$', '__pycache__', '.git', '.idea']
 let NERDTreeShowHidden=1
 
-Plugin 'jade.vim'
-
-Plugin 'terryma/vim-multiple-cursors'
-
 Plugin 'bronson/vim-trailing-whitespace'
 
 Plugin 'xolox/vim-misc'
@@ -33,8 +29,6 @@ Plugin 'christoomey/vim-tmux-navigator'
 " Change two selections. use cx or cxx
 " X in Visual mode !!!
 Plugin 'tommcdo/vim-exchange'
-
-Plugin 'ivanov/vim-ipython'
 
 Plugin 'jelera/vim-javascript-syntax'
 
@@ -96,6 +90,8 @@ Plugin 'robbles/logstash.vim'
 
 Plugin 'ekalinin/Dockerfile.vim'
 
+Plugin 'chase/vim-ansible-yaml'
+
 call vundle#end()            " required
 filetype plugin indent on    " required
 
@@ -121,6 +117,7 @@ set backup
 set noswapfile
 set omnifunc=csscomplete#CompleteCSS
 set autoread
+set textwidth=0 wrapmargin=0
 
 "Searching
 " search as characters are entered
